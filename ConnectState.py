@@ -1,5 +1,5 @@
 from copy import deepcopy
-import numpy as np # type: ignore
+import numpy as np 
 from meta import GameMeta
 
 
@@ -27,6 +27,13 @@ class ConnectState:
         if len(self.last_played) > 0 and self.check_win_from(self.last_played[0], self.last_played[1]):
             return self.board[self.last_played[0]][self.last_played[1]]
         return 0
+    
+    def winner(self):
+        if self.check_win() == GameMeta.PLAYERS['one']:
+            return GameMeta.PLAYERS['one']
+        elif self.check_win() == GameMeta.PLAYERS['two']:
+            return GameMeta.PLAYERS['two']
+        return None
 
     def check_win_from(self, row, col):
         player = self.board[row][col]

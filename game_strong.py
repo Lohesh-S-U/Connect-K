@@ -1,8 +1,6 @@
 from ConnectState import ConnectState
 from mcts import MCTS
 from minimax_strong import Minimax_strong
-from minimax_medium import Minimax_medium
-from minimax_weak import Minimax_weak
 
 def play():
     k = int(input("Enter k: "))
@@ -14,13 +12,7 @@ def play():
         ai = MCTS(state)
     elif algo_choice == "minimax":
         depth = int(input("Enter Minimax depth: "))
-        difficulty = input("Choose difficulty (strong/medium/weak): ").strip().lower()
-        if(difficulty=="strong"):
-            ai = Minimax_strong(state, depth)
-        elif(difficulty=="medium"):
-            ai = Minimax_medium(state, depth)
-        else:
-            ai = Minimax_weak(state, depth)
+        ai = Minimax_strong(state, depth)
     else:
         print("Invalid choice. Defaulting to MCTS.")
         ai = MCTS(state)
